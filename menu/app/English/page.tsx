@@ -18,6 +18,12 @@ export default function EnglishMenu() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory>('starters');
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+  
+  const handleBack = () => {
+    // Set flag before navigating back
+    sessionStorage.setItem('fromLanguageMenu', 'true');
+    window.location.href = '/';
+  };
 
   useEffect(() => {
     async function loadMenuItems() {
@@ -39,6 +45,12 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      <button 
+        onClick={handleBack}
+        className="fixed top-4 right-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors z-50"
+      >
+        Back to Languages
+      </button>
       <header className="bg-black/30 backdrop-blur-sm sticky top-0 z-10 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <h1 className="text-5xl font-bold mb-8 text-center bg-gradient-to-r from-amber-200 to-yellow-400 text-transparent bg-clip-text">

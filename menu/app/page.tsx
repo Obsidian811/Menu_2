@@ -13,23 +13,36 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const transitionSequence = async () => {
-      // Hotel name transition
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setTransition({ current: 'hotel', opacity: 0 });
-      
-      await new Promise(resolve => setTimeout(resolve, 500)); // Fade out time
-      setTransition({ current: 'ad', opacity: 1 });
-      
-      // Advertisement transition
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setTransition({ current: 'ad', opacity: 0 });
-      
-      await new Promise(resolve => setTimeout(resolve, 500)); // Fade out time
-      setTransition({ current: 'language', opacity: 1 });
-    };
+    // Check if we're coming back from a language menu
+    const fromLanguageMenu = sessionStorage.getItem('fromLanguageMenu') === 'true';
+    
+    if (!fromLanguageMenu) {
+      // Run transition sequence for fresh loads and reloads
+      sessionStorage.removeItem('fromLanguageMenu');
+      const transitionSequence = async () => {
+        // Start with hotel name
+        setTransition({ current: 'hotel', opacity: 1 });
+        
+        // Hotel name transition
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setTransition({ current: 'hotel', opacity: 0 });
+        
+        await new Promise(resolve => setTimeout(resolve, 500)); // Fade out time
+        setTransition({ current: 'ad', opacity: 1 });
+        
+        // Advertisement transition
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setTransition({ current: 'ad', opacity: 0 });
+        
+        await new Promise(resolve => setTimeout(resolve, 500)); // Fade out time
+        setTransition({ current: 'language', opacity: 1 });
+      };
 
-    transitionSequence();
+      transitionSequence();
+    } else {
+      // Skip transition for back navigation
+      setTransition({ current: 'language', opacity: 1 });
+    }
   }, []);
 
   const handleLanguageSelect = (language: string) => {
@@ -102,6 +115,19 @@ export default function Home() {
               </button>
             </div>
           </div>
+        )}
+        
+        {/* Debug button - remove in production */}
+        {process.env.NODE_ENV === 'development' && (
+          <button
+            onClick={() => {
+              localStorage.removeItem('hasSeenIntro');
+              window.location.reload();
+            }}
+            className="fixed bottom-4 right-4 px-4 py-2 bg-gray-800 text-white rounded-lg opacity-50 hover:opacity-100"
+          >
+            Reset Intro
+          </button>
         )}
       </div>
     </div>
