@@ -3,46 +3,44 @@
 import { useState, useEffect } from 'react';
 import { MenuItem, MenuCategory } from '../lib/types';
 import { getMenuItems, getCategoryItems } from '../lib/menu-data';
-import { FoodItem, FoodDetailsModal, CategoryButton } from '../components/MenuComponents';
 import Image from 'next/image';
 
 const categories: { id: MenuCategory; name: string; icon: string }[] = [
-  { id: 'starters', name: 'Starters', icon: '🍳' },
-  { id: 'main-course', name: 'Main Course', icon: '🍽️' },
-  { id: 'drinks', name: 'Drinks', icon: '🥤' },
-  { id: 'alcohol', name: 'Alcohol', icon: '🍷' },
-  { id: 'desserts', name: 'Desserts', icon: '🍰' },
+  { id: 'starters', name: 'स्टार्टर्स', icon: '🍳' },
+  { id: 'main-course', name: 'मुख्य भोजन', icon: '🍽️' },
+  { id: 'drinks', name: 'पेय पदार्थ', icon: '🥤' },
+  { id: 'alcohol', name: 'मदिरा', icon: '🍷' },
+  { id: 'desserts', name: 'मिठाई', icon: '🍰' },
 ];
 
-export default function EnglishMenu() {
+export default function HindiMenu() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory>('starters');
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+  const [categoryItems, setCategoryItems] = useState<MenuItem[]>([]);
 
   useEffect(() => {
     async function loadMenuItems() {
-      const items = await getMenuItems('English');
+      const items = await getMenuItems('Hindi');
       setMenuItems(items);
     }
     loadMenuItems();
   }, []);
 
-  const [categoryItems, setCategoryItems] = useState<MenuItem[]>([]);
-
-useEffect(() => {
-  async function loadCategoryItems() {
-    const items = await getCategoryItems(menuItems, selectedCategory);
-    setCategoryItems(items);
-  }
-  loadCategoryItems();
-}, [menuItems, selectedCategory]);
+  useEffect(() => {
+    async function loadCategoryItems() {
+      const items = await getCategoryItems(menuItems, selectedCategory);
+      setCategoryItems(items);
+    }
+    loadCategoryItems();
+  }, [menuItems, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+    <div className="min-h-screen bg-linear-to-b from-gray-900 to-gray-800 text-white">
       <header className="bg-black/30 backdrop-blur-sm sticky top-0 z-10 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-5xl font-bold mb-8 text-center bg-gradient-to-r from-amber-200 to-yellow-400 text-transparent bg-clip-text">
-            Our Menu
+          <h1 className="text-5xl font-bold mb-8 text-center bg-linear-to-r from-amber-200 to-yellow-400 text-transparent bg-clip-text">
+            हमारा मेन्यू
           </h1>
           
           {/* Category Navigation */}
@@ -80,13 +78,13 @@ useEffect(() => {
                   fill
                   className="object-cover transform group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
                   item.type === 'veg' 
                     ? 'bg-green-500/90 text-white'
                     : 'bg-red-500/90 text-white'
                 }`}>
-                  {item.type}
+                  {item.type === 'veg' ? 'शाकाहारी' : 'मांसाहारी'}
                 </span>
               </div>
               <div className="p-6">
@@ -98,7 +96,7 @@ useEffect(() => {
                     onClick={() => setSelectedItem(item)}
                     className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
                   >
-                    View Details
+                    विवरण देखें
                   </button>
                 </div>
               </div>
@@ -133,7 +131,7 @@ useEffect(() => {
                     ? 'bg-green-500/20 text-green-300'
                     : 'bg-red-500/20 text-red-300'
                 }`}>
-                  {selectedItem.type}
+                  {selectedItem.type === 'veg' ? 'शाकाहारी' : 'मांसाहारी'}
                 </span>
               </div>
               <p className="text-gray-400 mb-6">{selectedItem.longDescription || selectedItem.description}</p>
