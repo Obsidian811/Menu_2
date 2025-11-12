@@ -60,7 +60,7 @@ useEffect(() => {
           {/* Category Navigation */}
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
             {categories.map(category => (
-              <button
+              <buttonx
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 ${
