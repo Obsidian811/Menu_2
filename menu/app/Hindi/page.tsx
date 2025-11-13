@@ -35,8 +35,11 @@ export default function HindiMenu() {
 
   useEffect(() => {
     async function loadCategoryItems() {
-      const items = await getCategoryItems(menuItems, selectedCategory);
-      setCategoryItems(items);
+      // Only filter items if menuItems has been loaded
+      if (menuItems.length > 0) {
+        const items = await getCategoryItems(menuItems, selectedCategory);
+        setCategoryItems(items);
+      }
     }
     loadCategoryItems();
   }, [menuItems, selectedCategory]);
@@ -51,7 +54,7 @@ export default function HindiMenu() {
       </button>
       <header className="bg-black/30 backdrop-blur-sm sticky top-0 z-10 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-5xl font-bold mb-8 text-center bg-linear-to-r from-amber-200 to-yellow-400 text-transparent bg-clip-text">
+          <h1 className="text-5xl font-bold mb-8 text-center bg-gradient-to-r from-amber-200 to-yellow-400 text-transparent bg-clip-text">
             हमारा मेन्यू
           </h1>
           
@@ -75,52 +78,51 @@ export default function HindiMenu() {
         </div>
       </header>
 
-      {/* Menu Items Grid */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Menu Items List - Single Column (Refactored) */}
+      <main className="max-w-4xl mx-auto px-4 py-8"> {/* Adjusted max-width for single column */}
+        <div className="grid grid-cols-1 gap-4"> {/* Changed to a single column grid */}
           {categoryItems.map(item => (
             <div
               key={item.id}
-              className="group bg-gray-800 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300"
+              className="bg-gray-800 rounded-xl p-6 flex justify-between items-center transition-all duration-300 border border-gray-700 hover:border-amber-500"
             >
-              <div className="aspect-video relative overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="object-cover transform group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
-                  item.type === 'veg' 
-                    ? 'bg-green-500/90 text-white'
-                    : 'bg-red-500/90 text-white'
-                }`}>
-                  {item.type === 'veg' ? 'शाकाहारी' : 'मांसाहारी'}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-                <p className="text-gray-400 mb-4 line-clamp-2">{item.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-amber-400">₹{item.price.toFixed(2)}</span>
-                  <button
-                    onClick={() => setSelectedItem(item)}
-                    className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
-                  >
-                    विवरण देखें
-                  </button>
+              {/* Left side: Name, Description, Price */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center mb-2">
+                    <h3 className="text-xl font-semibold mr-3">{item.name}</h3>
+                    {/* Veg/Non-Veg Badge */}
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                        item.type === 'veg' 
+                            ? 'bg-green-500/90 text-white'
+                            : 'bg-red-500/90 text-white'
+                    }`}>
+                        {item.type === 'veg' ? 'शाकाहारी' : 'मांसाहारी'}
+                    </span>
                 </div>
+                <p className="text-gray-400 mb-2 line-clamp-2">{item.description}</p>
+                <span className="text-xl font-bold text-amber-400">₹{item.price.toFixed(2)}</span>
               </div>
+              
+              {/* Right side: View Details Button */}
+              <button
+                onClick={() => setSelectedItem(item)}
+                className="ml-6 flex-shrink-0 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors font-medium whitespace-nowrap"
+              >
+                विवरण देखें
+              </button>
             </div>
           ))}
+          {categoryItems.length === 0 && (
+             <p className="text-center text-gray-400 py-10 text-lg">इस श्रेणी में कोई आइटम नहीं मिला।</p>
+          )}
         </div>
       </main>
 
-      {/* Item Details Modal */}
+      {/* Item Details Modal (Now includes the image) */}
       {selectedItem && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-gray-800 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl">
+            {/* Dish Photo is now visible inside the modal */}
             <div className="relative h-96">
               <Image
                 src={selectedItem.image}
