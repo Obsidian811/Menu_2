@@ -50,6 +50,17 @@ const mockMenuData: Record<string, MenuItem[]> = {
       longDescription: 'A warm, creamy blend of spinach, artichoke hearts, and three cheeses. Served with crispy tortilla chips and fresh salsa.',
       language: 'English'
     },
+    {
+      id: 's5',
+      name: 'Chicken Lollipops',
+      description: 'Spicy chicken lollipops with tangy sauce',
+      price: 399,
+      category: 'starters',
+      type: 'non-veg',
+      image: '/images/chicken-lollipops.jpg',
+      longDescription: 'Spicy chicken lollipops marinated in a blend of hot spices and served with a tangy dipping sauce.',
+      language: 'English'
+    },
 
     // Main Course
     {
@@ -213,111 +224,6 @@ const mockMenuData: Record<string, MenuItem[]> = {
       language: 'English'
     }
   ],
-  Hindi: [
-    {
-      id: 's1',
-      name: 'चिकन विंग्स',
-      description: 'मसालेदार बीबीक्यू चिकन विंग्स ब्लू चीज़ डिप के साथ',
-      price: 399,
-      category: 'starters',
-      type: 'non-veg',
-      image: '/images/chicken-wings.jpg',
-      longDescription: 'हमारी विशेष चिकन विंग्स जो 24 घंटे मैरीनेट की गई हैं और परफेक्ट ग्रिल की गई हैं। होममेड ब्लू चीज़ डिप और सेलरी स्टिक्स के साथ परोसी जाती हैं।',
-      language: 'Hindi'
-    },
-    {
-      id: 's2',
-      name: 'पनीर टिक्का',
-      description: 'भारतीय मसालों के साथ ग्रिल्ड पनीर',
-      price: 349,
-      category: 'starters',
-      type: 'veg',
-      image: '/images/paneer-tikka.jpg',
-      longDescription: 'ताजा पनीर दही और भारतीय मसालों में मैरीनेट किया गया, तंदूर में पकाया गया। पुदीने की चटनी और प्याज के रिंग्स के साथ परोसा जाता है।',
-      language: 'Hindi'
-    },
-    {
-      id: 'm1',
-      name: 'बटर चिकन',
-      description: 'मखमली टमाटर ग्रेवी में नरम चिकन',
-      price: 499,
-      category: 'main-course',
-      type: 'non-veg',
-      image: '/images/butter-chicken.jpg',
-      longDescription: 'क्लासिक नॉर्थ इंडियन डिश जिसमें नरम चिकन के टुकड़े समृद्ध और क्रीमी टमाटर ग्रेवी में पकाए जाते हैं, मक्खन और क्रीम के साथ फिनिश किया जाता है।',
-      language: 'Hindi'
-    },
-  ],
-  Gujarati: [
-    {
-      id: 's1',
-      name: 'ધાણા મરચાં પનીર ટિક્કા',
-      description: 'તાજા પનીર ને ધાણા અને મરચાં સાથે મસાલામાં મેરીનેટ કરેલું',
-      price: 349,
-      category: 'starters',
-      type: 'veg',
-      image: '/images/paneer-tikka.jpg',
-      longDescription: 'તાજા પનીર ને ધાણા અને લીલા મરચાં સાથે સ્પેશિયલ મસાલામાં મેરીનેટ કરી તંદૂરમાં બનાવેલું. મીઠી ધાણાની ચટણી સાથે પીરસવામાં આવે છે.',
-      language: 'Gujarati'
-    },
-    {
-      id: 'm1',
-      name: 'ઉંધીયુ',
-      description: 'પરંપરાગત ગુજરાતી શાકભાજી નું મિશ્રણ',
-      price: 299,
-      category: 'main-course',
-      type: 'veg',
-      image: '/images/undhiyu.jpg',
-      longDescription: 'વિવિધ શાકભાજી જેવા કે રીંગણ, બટાકા, કેળા, વાલ પાપડી વગેરે ને સ્પેશિયલ મસાલા સાથે સ્લો કુક કરેલું. ગરમાગરم પૂરી અથવા રોટલી સાથે પીરસવામાં આવે છે.',
-      language: 'Gujarati'
-    },
-    {
-      id: 'd1',
-      name: 'છાસ',
-      description: 'મસાલા નાખેલી તાજી છાસ',
-      price: 89,
-      category: 'drinks',
-      type: 'veg',
-      image: '/images/chaas.jpg',
-      longDescription: 'તાજી દહીં માંથી બનાવેલી છાસ, જેમાં જીરું, મરચું, આદુ અને કોથમીર નાખેલા છે. ગરમીમાં તાજગી આપનારું શીતળ પીણું.',
-      language: 'Gujarati'
-    },
-  ],
-  Marathi: [
-    {
-      id: 's1',
-      name: 'कोथिंबीर वडे',
-      description: 'कोथिंबीर आणि मसाल्यांचे टेस्टी वडे',
-      price: 199,
-      category: 'starters',
-      type: 'veg',
-      image: '/images/kothimbir-vada.jpg',
-      longDescription: 'ताज्या कोथिंबीर मध्ये मसाले घालून बनवलेले क्रिस्पी वडे. चटणीसोबत सर्व्ह केले जातात.',
-      language: 'Marathi'
-    },
-    {
-      id: 'm1',
-      name: 'मटण रस्सा',
-      description: 'कोल्हापुरी स्टाईल मटण रस्सा',
-      price: 449,
-      category: 'main-course',
-      type: 'non-veg',
-      image: '/images/mutton-rassa.jpg',
-      longDescription: 'कोल्हापुरी मसाल्यात शिजवलेले टेंडर मटण. गरमागरम भाकरी किंवा वरणभातासोबत सर्व्ह केले जाते.',
-      language: 'Marathi'
-    },
-    {
-      id: 'd1',
-      name: 'सोल कढी',
-      description: 'कोकणी स्टाईल कोकम सरबत',
-      price: 129,
-      category: 'drinks',
-      type: 'veg',
-      image: '/images/sol-kadhi.jpg',
-      longDescription: 'कोकम आणि नारळाच्या दुधापासून बनवलेले पारंपारिक कोकणी पेय. जेवणानंतर पचनासाठी उत्तम.',
-      language: 'Marathi'
-    },
-  ]
 };
 
 export async function getMenuItems(language: string): Promise<MenuItem[]> {

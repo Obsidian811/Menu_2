@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { MenuItem, MenuCategory } from '../lib/types';
-import { getMenuItems, getCategoryItems } from '../lib/menu-data';
+import { getMenuItems, getCategoryItems } from '../lib/menu-data-guj';
 import Image from 'next/image';
 
 const categories: { id: MenuCategory; name: string; icon: string }[] = [
   { id: 'starters', name: 'સ્ટાર્ટર્સ', icon: '🍳' },
   { id: 'main-course', name: 'મુખ્ય ભોજન', icon: '🍽️' },
-  { id: 'drinks', name: 'પીણાં', icon: '🥤' },
+  { id: 'cold-drinks', name: 'પીણાં', icon: '🥤' },
   { id: 'alcohol', name: 'દારૂ', icon: '🍷' },
   { id: 'desserts', name: 'મીઠાઈ', icon: '🍰' },
 ];

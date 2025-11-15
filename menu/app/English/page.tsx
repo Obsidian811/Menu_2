@@ -2,22 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import { MenuItem, MenuCategory } from '../lib/types';
-import { getMenuItems, getCategoryItems } from '../lib/menu-data';
+import { getMenuItems, getCategoryItems } from '../lib/menu-data-eng';
 // FoodItem, FoodDetailsModal, CategoryButton were imported but not used, so I'll keep them commented out or remove them if they aren't needed in the final version.
 // import { FoodItem, FoodDetailsModal, CategoryButton } from '../components/MenuComponents';
 import Image from 'next/image';
 
 const categories: { id: MenuCategory; name: string; icon: string }[] = [
+  { id: 'soup', name: 'Soup', icon: '🍽️' },
   { id: 'starters', name: 'Starters', icon: '🍳' },
   { id: 'main-course', name: 'Main Course', icon: '🍽️' },
-  { id: 'drinks', name: 'Drinks', icon: '🥤' },
+  { id: 'cold-drinks', name: 'Cold Drinks', icon: '🥤' },
   { id: 'alcohol', name: 'Alcohol', icon: '🍷' },
   { id: 'desserts', name: 'Desserts', icon: '🍰' },
 ];
 
 export default function EnglishMenu() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<MenuCategory>('starters');
+  const [selectedCategory, setSelectedCategory] = useState<MenuCategory>('soup');
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   
   const handleBack = () => {

@@ -10,7 +10,7 @@ export interface MenuItem {
   language: 'English' | 'Hindi' | 'Gujarati' | 'Marathi';
 }
 
-export type MenuCategory = 'starters' | 'main-course' | 'drinks' | 'alcohol' | 'desserts';
+export type MenuCategory = 'soup'|'starters' | 'main-course' | 'cold-drinks' | 'alcohol' | 'desserts';
 
 export interface TransitionState {
   current: 'hotel' | 'ad' | 'language';
