@@ -1,8 +1,0 @@
-id,name,description,price,category,type,image,longDescription
-s1,Chicken Wings,Spicy BBQ chicken wings with blue cheese dip,399,starters,non-veg,/images/chicken-wings.jpg,Our signature chicken wings marinated for 24 hours and grilled to perfection. Served with homemade blue cheese dip and celery sticks.
-s2,Paneer Tikka,Grilled cottage cheese with Indian spices,349,starters,veg,/images/paneer-tikka.jpg,Fresh cottage cheese marinated in yogurt and aromatic Indian spices, grilled in tandoor. Served with mint chutney and onion rings.
-m1,Butter Chicken,Tender chicken in rich tomato gravy,499,main-course,non-veg,/images/butter-chicken.jpg,A classic North Indian dish made with tender chicken pieces in a rich and creamy tomato-based gravy, finished with butter and cream.
-m2,Dal Makhani,Black lentils cooked overnight,399,main-course,veg,/images/dal-makhani.jpg,Slow-cooked black lentils simmered overnight with rich cream and butter, finished with a tempering of ghee and spices.
-d1,Fresh Lime Soda,Sweet or salted lime soda,149,drinks,veg,/images/lime-soda.jpg,Refreshing lime juice mixed with soda water and your choice of sweet or salted seasoning.
-a1,House Red Wine,Premium red wine by glass,399,alcohol,non-veg,/images/red-wine.jpg,A full-bodied red wine with notes of blackberry and oak. Perfect pairing with our meat dishes.
-ds1,Gulab Jamun,Traditional Indian sweet,199,desserts,veg,/images/gulab-jamun.jpg,Soft milk-based dumplings soaked in rose-flavored sugar syrup. Served warm with a garnish of pistachios.

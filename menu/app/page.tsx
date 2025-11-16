@@ -9,12 +9,12 @@ export default function Home() {
   const router = useRouter();
   const [transition, setTransition] = useState<TransitionState>({ 
     current: 'hotel',
-    opacity: 1 
+    opacity: 0
   });
 
   useEffect(() => {
     // Check if we're coming back from a language menu
-    const fromLanguageMenu = sessionStorage.getItem('fromLanguageMenu') === 'true';
+    const fromLanguageMenu: boolean = sessionStorage.getItem('fromLanguageMenu') === 'true';
     
     if (!fromLanguageMenu) {
       // Run transition sequence for fresh loads and reloads
@@ -58,8 +58,8 @@ export default function Home() {
             className="transition-opacity duration-500 ease-in-out text-center"
             style={{ opacity: transition.opacity }}
           >
-            <h1 className="text-6xl font-bold mb-4">Hotel Name</h1>
-            <p className="text-xl">Welcome to a world of culinary excellence</p>
+            <h1 className="text-6xl font-bold mb-4">Name of Hotel</h1>
+            <p className="text-lg">Description</p>
           </div>
         )}
 
